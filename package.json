@@ -8,12 +8,14 @@
     "url": "git://github.com/dominictarr/bench-ssb.git"
   },
   "dependencies": {
+    "pull-many": "^1.0.8",
+    "scuttlebot": "^10.4.9",
+    "secure-scuttlebutt": "^16.3.7"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
-  "license": "MIT"  
+  "license": "MIT"
 }
