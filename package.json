@@ -8,9 +8,13 @@
     "url": "git://github.com/dominictarr/bench-ssb.git"
   },
   "dependencies": {
+    "pull-cont": "^0.1.1",
     "pull-many": "^1.0.8",
+    "pull-stream": "^3.6.1",
+    "rimraf": "^2.6.1",
     "scuttlebot": "^10.4.9",
-    "secure-scuttlebutt": "^16.3.7"
+    "secure-scuttlebutt": "git://github.com/ssbc/secure-scuttlebutt.git#validate2",
+    "ssb-client": "^4.5.1"
   },
   "devDependencies": {},
   "scripts": {
