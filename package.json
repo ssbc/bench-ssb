@@ -8,6 +8,7 @@
     "url": "git://github.com/dominictarr/bench-ssb.git"
   },
   "dependencies": {
+    "cli-table": "^0.3.1",
     "pull-cont": "^0.1.1",
     "pull-many": "^1.0.8",
     "pull-stream": "^3.6.1",
