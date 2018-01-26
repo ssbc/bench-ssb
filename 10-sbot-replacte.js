@@ -28,14 +28,17 @@ var closed = false
 
 sbot.getVectorClock(function (err, clock) {
   var first = (function () { for(var k in clock) return k })()
-  var friends = {}
 
   var log = require('./util')('remote-legacy-replicate')
 
-  var friends = {}
+  var clockLength = Object.values(clock).reduce((a,b) => a+b, 0)
 
   sbot2.post(function (data) {
     log(1)
+    if (--clockLength <= 0) {
+      sbot.close()
+      sbot2.close()
+    }
   })
 
   sbot2.publish({
