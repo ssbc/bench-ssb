@@ -1,4 +1,3 @@
-
 var Minimal = require('secure-scuttlebutt/minimal')
 var data = require('./output.json')
 
@@ -11,19 +10,12 @@ var pull = require('pull-stream')
 
 pull(
   pull.values(data.queue),
-  function (read) {
-    read(null, function next (err, msg) {
-      if(err === true) db.flush(done)
-      else if(err) done(err)
-      else {
-        db.queue(msg, function (err, data) {
-          log(1)
-          if(err) done(err === true ? null : err)
-          else read(null, next)
-        })
-      }
+  pull.drain(function(msg) {
+    db.queue(msg, function (err, data) {
+      log(1)
+      if(err) done(err === true ? null : err)
     })
-  }
+  })
 )
 
 function done (err) {
