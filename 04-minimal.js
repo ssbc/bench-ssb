@@ -7,14 +7,19 @@ db.ready.set(true)
 var log = require('./util')('minimal')
 
 var pull = require('pull-stream')
+var paramap = require('pull-paramap')
 
 pull(
   pull.values(data.queue),
-  pull.drain(function(msg) {
+  paramap(function(msg, cb) {
     db.queue(msg, function (err, data) {
       log(1)
       if(err) done(err === true ? null : err)
+      cb()
     })
+  }, 1),
+  pull.collect(function() {
+    db.flush(done)
   })
 )
 

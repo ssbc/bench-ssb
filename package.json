@@ -11,6 +11,7 @@
     "pull-cont": "^0.1.1",
     "pull-many": "^1.0.8",
     "pull-stream": "^3.6.1",
+    "pull-paramap": "^1.2.2",
     "rimraf": "^2.6.1",
     "scuttlebot": "^10.5.0",
     "secure-scuttlebutt": "^17.1.1",
