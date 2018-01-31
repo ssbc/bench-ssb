@@ -4,7 +4,7 @@ var _state = require('./output.json')
 var V = require('ssb-validate')
 var U = require('./util')
 var queue = _state.queue
-var log = U('validate')
+var log = U('json')
 var state = V.initial()
 while(queue.length) {
 //  state = V.append(state, null, queue.shift())

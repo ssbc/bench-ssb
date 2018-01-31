@@ -5,9 +5,6 @@ var Many = require('pull-many')
 var db = SSB(null, {}, null, '/tmp/bench-ssb-legacy_ssb/')
 db.ready.set(true)
 
-
-var pull = require('pull-stream')
-
 var a = []
 
 db.getVectorClock(function (err, clock) {

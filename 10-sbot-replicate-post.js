@@ -9,7 +9,7 @@ var dir = '/tmp/bench-ssb-legacy_ssb/'
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
 var config = {
   path: dir,
-  keys: keys,
+  keys: keys
 }
 
 var dir2 = '/tmp/bench-ssb-legacy_ssb2/'
@@ -29,7 +29,7 @@ var closed = false
 sbot.getVectorClock(function (err, clock) {
   var first = (function () { for(var k in clock) return k })()
 
-  var log = require('./util')('remote-legacy-replicate')
+  var log = require('./util')('remote-legacy-replicate-post')
 
   var clockLength = Object.values(clock).reduce((a,b) => a+b, 0)
 

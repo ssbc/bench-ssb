@@ -42,7 +42,7 @@ sbot.getVectorClock(function (err, clock) {
       )
     }
 
-    var log = require('./util')('remote-legacy-replicate')
+    var log = require('./util')('sbot-read')
 
     var n = 0
 
