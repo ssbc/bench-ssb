@@ -61,6 +61,7 @@ sbot.getVectorClock(function (err, clock) {
       log(0, true)
       rpc.close()
       sbot.close()
+      sbot2.close()
       closed = true
     }
 
