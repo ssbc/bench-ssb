@@ -1,6 +1,6 @@
 const os = require('os');
 
-exports.info = function() {
+let info = function() {
   return { platform: os.platform(),
            release: os.release(),
            architecture: os.arch,
@@ -11,3 +11,5 @@ exports.info = function() {
            nodeversion: process.version
          }
 }
+
+console.log(info())
