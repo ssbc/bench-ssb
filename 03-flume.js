@@ -8,6 +8,8 @@ var V = require('ssb-validate')
 
 var db = Flume(OffsetLog('/tmp/bench-ssb-flume_'+Date.now()+'/log.offset', {blockSize: 1024*16, codec: require('flumecodec/json')}))
 
+var i=0
+
 var queue = AsyncWrite(function write (buffer, cb) {
   db.append(buffer, cb)
 }, function reduce (buffer, msg) {
@@ -35,7 +37,7 @@ pull(
     read(null, function next (err, msg) {
       if(err) done(err === true ? null : err)
       else queue(msg, function (err) {
-          log(1)
+          log(1, ++i % 10000 == 0)
           if(err) done(err === true ? null : err)
           else read(null, next)
         })

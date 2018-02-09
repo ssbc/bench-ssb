@@ -16,6 +16,8 @@ var sbot = Sbot(config)
 
 var closed = false
 
+var i = 0
+
 sbot.getVectorClock(function (err, clock) {
   var first = (function () { for(var k in clock) return k })()
   var friends = {}
@@ -37,7 +39,7 @@ sbot.getVectorClock(function (err, clock) {
         rpc.createHistoryStream({id: id, seq: 0, keys: false}),
         pull.drain(function (msg) {
           if(msg.content.contact) replicate(msg.content.contact)
-          log(1)
+          log(1, ++i % 10000 == 0)
         }, next)
       )
     }

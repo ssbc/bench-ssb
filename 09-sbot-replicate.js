@@ -22,6 +22,7 @@ var sbot = Sbot(config)
 var sbot2 = Sbot({ path: dir2, keys: keys2 })
 
 var closed = false
+var i = 0
 
 sbot.getVectorClock(function (err, clock) {
   var first = (function () { for(var k in clock) return k })()
@@ -43,7 +44,7 @@ sbot.getVectorClock(function (err, clock) {
       pull(
         rpc.createHistoryStream({id: id, seq: 0, keys: false}),
         pull.through(function (msg) {
-          log(1)
+          log(1, ++i % 10000 == 0)
           if(msg.content.contact) replicate(msg.content.contact)
         }),
         sbot2.createWriteStream(next)

@@ -8,6 +8,8 @@ db.ready.set(true)
 var pull = require('pull-stream')
 
 var a = []
+var i = 0
+
 pull(
 //  db.createLogStream({reverse: true, keys: true, values: false, meta: true}),
   db.time.read({keys: true, values: false}),
@@ -26,7 +28,7 @@ pull(
         db.get(k.seq, cb)
       }, 100),
       pull.drain(function (msg) {
-        log(1)
+        log(1, ++i % 10000 == 0)
       }, function () {
         log(0, true)
       })

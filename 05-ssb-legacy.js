@@ -18,6 +18,8 @@ var log = require('./util')('legacy')
 
 var pull = require('pull-stream')
 
+var i = 0
+
 feed.publish({
   type: 'contact',
   contact: data.queue[0].author,
@@ -27,7 +29,7 @@ feed.publish({
 pull(
   pull.values(data.queue),
   pull.through(function () {
-    log(1)
+    log(1, ++i % 10000 == 0)
   }),
   db.createWriteStream(function (err) {
     if(err) throw err

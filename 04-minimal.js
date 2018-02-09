@@ -9,11 +9,13 @@ var log = require('./util')('minimal')
 var pull = require('pull-stream')
 var paramap = require('pull-paramap')
 
+var i = 0
+
 pull(
   pull.values(data.queue),
   paramap(function(msg, cb) {
     db.queue(msg, function (err, data) {
-      log(1)
+      log(1, ++i % 10000 == 0)
       if(err) done(err === true ? null : err)
       cb()
     })

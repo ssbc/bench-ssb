@@ -6,6 +6,7 @@ var db = SSB(null, {}, null, '/tmp/bench-ssb-legacy_ssb/')
 db.ready.set(true)
 
 var a = []
+var i = 0
 
 db.getVectorClock(function (err, clock) {
   var log = require('./util')('clock-dump')
@@ -22,7 +23,7 @@ db.getVectorClock(function (err, clock) {
       }
     })),
     pull.drain(function (msg) {
-      log(1)
+      log(1, ++i % 10000 == 0)
     }, function () {
       log(0, true)
     })

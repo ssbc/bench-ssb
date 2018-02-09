@@ -40,6 +40,8 @@ var sbot2 = Sbot({
 
 var closed = false
 
+var i = 0
+
 sbot.getVectorClock(function (err, clock) {
   var first = (function () { for(var k in clock) return k })()
 
@@ -48,7 +50,7 @@ sbot.getVectorClock(function (err, clock) {
   var clockLength = Object.values(clock).reduce((a,b) => a+b, 0)
 
   sbot2.post(function (data) {
-    log(1)
+    log(1, ++i % 10000 == 0)
     if (--clockLength <= 0) {
       sbot.close()
       sbot2.close()
