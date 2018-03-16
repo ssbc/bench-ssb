@@ -29,7 +29,7 @@ var keys2 = ssbKeys.loadOrCreateSync(path.join(dir2, 'secret'))
 var Sbot = require('scuttlebot')
   .use(require('scuttlebot/plugins/replicate'))
   .use(require('ssb-friends'))
-  .use(require('ssb-ebt'))
+  .use(require('scuttlebot/node_modules/ssb-ebt'))
 
 var sbot = Sbot(config)
 var sbot2 = Sbot({

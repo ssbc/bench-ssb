@@ -13,11 +13,10 @@
     "pull-stream": "^3.6.1",
     "pull-paramap": "^1.2.2",
     "rimraf": "^2.6.1",
-    "scuttlebot": "^10.5.0",
-    "secure-scuttlebutt": "^17.1.1",
-    "ssb-client": "^4.5.2",
-    "ssb-keys": "^7.0.13",
-    "ssb-ebt": "^2.0.0"
+    "scuttlebot": "^11.1.0",
+    "secure-scuttlebutt": "^17.1.2",
+    "ssb-client": "^4.5.7",
+    "ssb-keys": "^7.0.14"
   },
   "devDependencies": {},
   "scripts": {
