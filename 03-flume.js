@@ -1,4 +1,3 @@
-
 var Flume = require('flumedb')
 var OffsetLog = require('flumelog-offset')
 

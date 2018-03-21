@@ -4,9 +4,6 @@ var pull = require('pull-stream')
 var db = SSB(null, {}, null, '/tmp/bench-ssb-legacy_ssb/')
 db.ready.set(true)
 
-
-var pull = require('pull-stream')
-
 var a = []
 var i = 0
 
