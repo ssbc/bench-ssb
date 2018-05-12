@@ -9,7 +9,7 @@ var i = 0
 
 pull(
 //  db.createLogStream({reverse: true, keys: true, values: false, meta: true}),
-  db.time.read({keys: true, values: false}),
+  db.time.read({keys: true, values: false, gt: 0}),
   pull.collect(function (err, ary) {
     ary.sort(function () { return Math.random() - 0.5 })
     var log = require('./util')('random-read')
