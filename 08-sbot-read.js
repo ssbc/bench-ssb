@@ -60,31 +60,3 @@ sbot.getVectorClock(function (err, clock) {
 
   })
 })
-
-//this was an idea to test the _frame rate_
-//to see how cpu locked it is. looks quite locked.
-//not sure how best to integrate into the other measurements.
-
-/*
-var fps = 0
-var ts = Date.now()
-;(function loop () {
-  if(closed) return
-  var _ts = Date.now()
-  fps ++
-  if(_ts > ts + 1000) {
-    console.log(fps)
-    fps = 0
-    ts = _ts
-  }
-  setImmediate(loop, 0)
-})()
-*/
-
-
-
-
-
-
-
-
