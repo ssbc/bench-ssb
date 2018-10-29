@@ -15,6 +15,10 @@ The benchmarks run on 100k messages and consists of:
 11. Sbot replicate ebt: like post but using ebt
 12. Flume reduce: test the performance of reduce, often used in indexes
 
+The results can be visualized using
+[benchmark-ci-visualizer](https://github.com/ssbc/benchmark-ci-visualizer)
+repo.
+
 ## License
 
 MIT
