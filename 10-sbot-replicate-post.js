@@ -50,6 +50,7 @@ sbot.getVectorClock(function (err, clock) {
   }, function () {})
 
   sbot2.connect(sbot.getAddress(), function (err, sbot) {
+    if (err) throw err
     console.log(err, sbot.id)
   })
 })
