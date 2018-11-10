@@ -1,11 +1,13 @@
 var Flume = require('flumedb')
 var OffsetLog = require('flumelog-offset')
+var rmrf = require('rimraf')
 
 var AsyncWrite = require('async-write')
 var pull = require('pull-stream')
 var V = require('ssb-validate')
 
-var db = Flume(OffsetLog('/tmp/bench-ssb-flume_'+Date.now()+'/log.offset', {blockSize: 1024*16, codec: require('flumecodec/json')}))
+var dir = '/tmp/bench-ssb-flume_'+Date.now()+'/log.offset'
+var db = Flume(OffsetLog(dir, {blockSize: 1024*16, codec: require('flumecodec/json')}))
 
 var i=0
 
@@ -45,6 +47,7 @@ pull(
 )
 
 function done (err) {
+  rmrf.sync(dir)
   if(err) throw err
   log(0, true)
 }

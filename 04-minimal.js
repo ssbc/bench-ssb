@@ -1,7 +1,9 @@
 var Minimal = require('secure-scuttlebutt/minimal')
 var data = require('./output.json')
+var rmrf = require('rimraf')
 
-var db = Minimal('/tmp/bench-ssb-minimal_'+Date.now()+'/', {})
+var dir = '/tmp/bench-ssb-minimal_'+Date.now()+'/'
+var db = Minimal(dir, {})
 db.ready.set(true)
 
 var log = require('./util')('minimal')
@@ -26,6 +28,7 @@ pull(
 )
 
 function done (err) {
+  rmrf.sync(dir)
   if(err) throw err
   log(0, true)
 }
