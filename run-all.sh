@@ -23,3 +23,9 @@ echo "running 11"
 node 11-sbot-replicate-ebt.js > 11-out.txt
 echo "running 12"
 node 12-flume-reduce.js > 12-out.txt
+echo "running 13"
+node 13-flume-reduce-native.js > 13-out.txt
+echo "running 14"
+node 14-json-parse.js > 14-out.txt
+echo "running 15"
+node 15-json-parse-native.js > 15-out.txt
