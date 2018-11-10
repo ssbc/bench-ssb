@@ -11,13 +11,14 @@ var i=0
 
 pull(
   pull.values(queue),
-  pull.drain(function (msg) {
-    state = V.append(state, null, msg)
+  pull.drain(function (data) {
+    state = V.append(state, null, data.value)
     log(1, ++i % 10000 == 0)
   }, function () {
     log(null, true)
   })
 )
+
 
 
 
