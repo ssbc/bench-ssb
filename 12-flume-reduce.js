@@ -7,7 +7,7 @@ var fs = require('fs')
 
 fs.unlink('/tmp/bench-ssb-legacy_ssb/flume/test.json', function() {
   // , blockSize: 256 * 1024
-  var offsetLog = OffsetLog('/tmp/bench-ssb-legacy_ssb/flume/log.offset', {codec: codec.json })
+  var offsetLog = OffsetLog('/tmp/bench-ssb-legacy_ssb/flume/log.offset', {codec: codec.json, blockSize: 16 * 1024 })
 
   var log = require('./util')('flume-reduce')
   var i = 0
