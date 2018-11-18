@@ -26,6 +26,32 @@ feed.publish({
   following: true
 }, function () {})
 
+function isFunction (f) {
+  return 'function' === typeof f
+}
+
+function isObject(o) {
+  return o && 'object' == typeof o
+}
+
+function since () {
+  var ssb = db
+  var plugs = {}
+  var sync = true
+  for(var k in ssb) {
+    if(ssb[k] && isObject(ssb[k]) && isFunction(ssb[k].since)) {
+      plugs[k] = ssb[k].since.value
+      sync = sync && (plugs[k] === ssb.since.value)
+    }
+  }
+  return {
+    since: ssb.since.value,
+    plugins: plugs,
+    sync: sync,
+  }
+}
+
+
 pull(
   pull.values(data.queue),
   pull.through(function () {
@@ -33,8 +59,14 @@ pull(
   }),
   db.createWriteStream(function (err) {
     if(err) throw err
+    console.error(since())
     log(0, true)
   })
 )
+
+
+
+
+
 
 

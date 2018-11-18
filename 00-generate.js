@@ -38,6 +38,7 @@ for(var j = 0; j < 100000; j++) {
 
 log(0, true)
 
-fs.writeFileSync('output.json', JSON.stringify(state))
-
+fs.writeFileSync('output.json', JSON.stringify({queue: state.queue.map(function (data) {
+  return data.value
+})}) )
 

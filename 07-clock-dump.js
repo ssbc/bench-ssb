@@ -9,6 +9,7 @@ var a = []
 var i = 0
 
 db.getVectorClock(function (err, clock) {
+  if(err) throw err
   var log = require('./util')('clock-dump')
 
   pull(
@@ -30,6 +31,7 @@ db.getVectorClock(function (err, clock) {
   )
 
 })
+
 
 
 
