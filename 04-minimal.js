@@ -13,8 +13,8 @@ var i = 0
 
 pull(
   pull.values(data.queue),
-  paramap(function(msg, cb) {
-    db.queue(msg, function (err, data) {
+  paramap(function(data, cb) {
+    db.queue(data.value, function (err, data) {
       log(1, ++i % 10000 == 0)
       if(err) done(err === true ? null : err)
       cb()
@@ -29,3 +29,4 @@ function done (err) {
   if(err) throw err
   log(0, true)
 }
+
