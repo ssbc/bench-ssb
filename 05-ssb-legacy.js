@@ -1,4 +1,4 @@
-var SSB = require('secure-scuttlebutt')
+var SSB = require('ssb-db')
 var data = require('./output.json')
 var ssbKeys = require('ssb-keys')
 var path = require('path')
@@ -28,7 +28,8 @@ feed.publish({
 
 pull(
   pull.values(data.queue),
-  pull.through(function () {
+  pull.map(function(msg) { return msg.value }),
+  pull.through(function (msg) {
     log(1, ++i % 10000 == 0)
   }),
   db.createWriteStream(function (err) {

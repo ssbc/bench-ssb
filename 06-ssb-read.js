@@ -1,4 +1,4 @@
-var SSB = require('secure-scuttlebutt')
+var SSB = require('ssb-db')
 var Paramap = require('pull-paramap')
 var pull = require('pull-stream')
 var db = SSB(null, {}, null, '/tmp/bench-ssb-legacy_ssb/')

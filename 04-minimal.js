@@ -1,4 +1,4 @@
-var Minimal = require('secure-scuttlebutt/minimal')
+var Minimal = require('ssb-db/minimal')
 var data = require('./output.json')
 var rmrf = require('rimraf')
 
@@ -16,7 +16,7 @@ var i = 0
 pull(
   pull.values(data.queue),
   paramap(function(msg, cb) {
-    db.queue(msg, function (err, data) {
+    db.queue(msg.value, function (err, data) {
       log(1, ++i % 10000 == 0)
       if(err) done(err === true ? null : err)
       cb()
