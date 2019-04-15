@@ -11,7 +11,7 @@ var config = {
   keys: keys
 }
 
-var Sbot = require('scuttlebot')
+var Sbot = require('ssb-server')
 var sbot = Sbot(config)
 
 var closed = false
@@ -19,7 +19,8 @@ var closed = false
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
-  var first = (function () { for(var k in clock) return k })()
+  if (err) throw err
+  var first = Object.keys(clock)[0]
   var friends = {}
   require('ssb-client')({
     remote: sbot.getAddress(),
@@ -29,10 +30,10 @@ sbot.getVectorClock(function (err, clock) {
       getVectorClock: 'async'
     }
   }, function (err, rpc) {
-    if(err) throw err
+    if (err) throw err
 
     function replicate (id) {
-      if(friends[id]) return
+      if (friends[id]) return
       friends[id] = true
       n++
       pull(
@@ -57,6 +58,5 @@ sbot.getVectorClock(function (err, clock) {
       sbot.close()
       closed = true
     }
-
   })
 })

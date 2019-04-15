@@ -17,7 +17,7 @@ rmrf.sync(dir2)
 var keys2 = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
 
 
-var Sbot = require('scuttlebot')
+var Sbot = require('ssb-server')
 var sbot = Sbot(config)
 var sbot2 = Sbot({ path: dir2, keys: keys2 })
 
@@ -25,8 +25,12 @@ var closed = false
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
-  var first = (function () { for(var k in clock) return k })()
+  var log = require('./util')('remote-legacy-replicate-write')
+
+  var first = Object.keys(clock)[0]
   var friends = {}
+  var n = 0
+
   require('ssb-client')({
     remote: sbot.getAddress(),
     keys: keys,
@@ -50,10 +54,6 @@ sbot.getVectorClock(function (err, clock) {
         sbot2.createWriteStream(next)
       )
     }
-
-    var log = require('./util')('remote-legacy-replicate-write')
-
-    var n = 0
 
     replicate(first)
 

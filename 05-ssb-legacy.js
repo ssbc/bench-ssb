@@ -22,7 +22,7 @@ var i = 0
 
 feed.publish({
   type: 'contact',
-  contact: data.queue[0].author,
+  contact: data.queue[0].value.author,
   following: true
 }, function () {})
 

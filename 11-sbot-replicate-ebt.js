@@ -19,10 +19,10 @@ rmrf.sync(dir2)
 
 var keys2 = ssbKeys.loadOrCreateSync(path.join(dir2, 'secret'))
 
-var Sbot = require('scuttlebot')
-  .use(require('scuttlebot/plugins/replicate'))
-  .use(require('ssb-friends'))
-  .use(require('ssb-ebt'))
+var Sbot = require('ssb-server')
+    .use(require('ssb-replicate'))
+    .use(require('ssb-friends'))
+    .use(require('ssb-ebt'))
 
 var sbot = Sbot(config)
 var sbot2 = Sbot({
@@ -36,10 +36,9 @@ var closed = false
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
-  var first = (function () { for(var k in clock) return k })()
-
   var log = require('./util')('remote-ebt-replicate')
 
+  var first = Object.keys(clock)[0]
   var clockLength = Object.values(clock).reduce((a,b) => a+b, 0)
 
   sbot2.post(function (data) {
