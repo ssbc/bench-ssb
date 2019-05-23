@@ -1,11 +1,9 @@
-var SSB = require('ssb-db')
-var Paramap = require('pull-paramap')
 var pull = require('pull-stream')
 var Many = require('pull-many')
-var db = SSB(null, {}, null, '/tmp/bench-ssb-legacy_ssb/')
-db.ready.set(true)
 
-var a = []
+var createSsb = require('ssb-db/create')
+var db = createSsb('/tmp/bench-ssb-legacy_ssb/', {}, require('ssb-keys').generate())
+
 var i = 0
 
 db.getVectorClock(function (err, clock) {
@@ -28,9 +26,4 @@ db.getVectorClock(function (err, clock) {
       log(0, true)
     })
   )
-
 })
-
-
-
-

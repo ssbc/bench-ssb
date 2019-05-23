@@ -1,4 +1,3 @@
-var SSB = require('ssb-db')
 var data = require('./output.json')
 var ssbKeys = require('ssb-keys')
 var path = require('path')
@@ -9,8 +8,8 @@ rmrf.sync(dir)
 
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
 
-var db = SSB(null, {}, null, dir)
-db.ready.set(true)
+var createSsb = require('ssb-db/create')
+var db = createSsb(dir, {}, keys)
 
 var feed = db.createFeed(keys)
 
@@ -37,5 +36,3 @@ pull(
     log(0, true)
   })
 )
-
-
