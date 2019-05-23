@@ -27,7 +27,3 @@ db.getVectorClock(function (err, clock) {
     })
   )
 })
-
-
-
-
