@@ -1,14 +1,13 @@
 var Paramap = require('pull-paramap')
 var pull = require('pull-stream')
 
-var createSsb = require('secret-stack')(require('ssb-config'))
-  .use(require('ssb-db'))
-var db = createSsb({ path: '/tmp/bench-ssb-legacy_ssb/' })
+var createSsb = require('ssb-db/create')
+var db = createSsb('/tmp/bench-ssb-legacy_ssb/', {}, require('ssb-keys').generate())
 
 var i = 0
 
 pull(
-  db.createLogStream({reverse: true, keys: true, values: false, seqs: true, meta: true}),
+  db.time.read({keys: true, values: false, gt: 0}),
   pull.collect(function (err, ary) {
     ary.sort(function () { return Math.random() - 0.5 })
     var log = require('./util')('random-read')
@@ -20,13 +19,12 @@ pull(
       }),
       pull.filter(Boolean),
       Paramap(function (k, cb) {
-        db.get(k, cb)
+        db.get(k.seq, cb)
       }, 100),
       pull.drain(function (msg) {
         log(1, ++i % 10000 == 0)
       }, function () {
         log(0, true)
-        db.close()
       })
     )
   })

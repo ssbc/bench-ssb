@@ -8,10 +8,8 @@ rmrf.sync(dir)
 
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
 
-var createSsb = require('secret-stack')(require('ssb-config'))
-  .use(require('ssb-db'))
-
-var db = createSsb({ path: dir })
+var createSsb = require('ssb-db/create')
+var db = createSsb(dir, {}, keys)
 
 var feed = db.createFeed(keys)
 
@@ -36,8 +34,5 @@ pull(
   db.createWriteStream(function (err) {
     if(err) throw err
     log(0, true)
-    db.close()
   })
 )
-
-

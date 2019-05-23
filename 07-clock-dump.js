@@ -1,9 +1,8 @@
 var pull = require('pull-stream')
 var Many = require('pull-many')
 
-var createSsb = require('secret-stack')(require('ssb-config'))
-  .use(require('ssb-db'))
-var db = createSsb({ path: '/tmp/bench-ssb-legacy_ssb/' })
+var createSsb = require('ssb-db/create')
+var db = createSsb('/tmp/bench-ssb-legacy_ssb/', {}, require('ssb-keys').generate())
 
 var i = 0
 
@@ -25,7 +24,6 @@ db.getVectorClock(function (err, clock) {
       log(1, ++i % 10000 == 0)
     }, function () {
       log(0, true)
-      db.close()
     })
   )
 })
