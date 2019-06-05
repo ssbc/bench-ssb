@@ -1,5 +1,5 @@
 var Flume = require('flumedb')
-var OffsetLog = require('flumelog-offset')
+var OffsetLog = require('flumelog-aligned-offset')
 var rmrf = require('rimraf')
 
 var AsyncWrite = require('async-write')
