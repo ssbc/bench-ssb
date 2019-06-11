@@ -14,6 +14,7 @@ The benchmarks run on 100k messages and consists of:
 10. Sbot replicate post: replicate using post instead of createHistoryStream
 11. Sbot replicate ebt: like post but using ebt
 12. Flume reduce: test the performance of reduce, often used in indexes
+13. Private: test the performance of encrypting and decrypting messages
 
 The results can be visualized using
 [benchmark-ci-visualizer](https://github.com/ssbc/benchmark-ci-visualizer)
