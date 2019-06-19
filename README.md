@@ -20,6 +20,21 @@ The results can be visualized using
 [benchmark-ci-visualizer](https://github.com/ssbc/benchmark-ci-visualizer)
 repo.
 
+## Testing on android
+
+- install termux
+- install [sshd](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) inside temux for easier remote access
+- inside termux:
+  - apt install git nodejs-lts
+  - git clone https://github.com/ssbc/bench-ssb.git
+  - npm i
+
+Don't worry that sodium-native won't compile. Wasm is not [so bad](https://github.com/ssbc/bench-ssb/issues/5).
+
+Do note that currently it takes a bit of [manual
+work](https://github.com/dominictarr/sodium-browserify/issues/5) to
+make the tests use wasm.
+
 ## License
 
 MIT
