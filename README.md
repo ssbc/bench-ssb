@@ -23,7 +23,7 @@ repo.
 ## Testing on android
 
 - install termux
-- install [sshd](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) inside temux for easier remote access
+- install [sshd](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) inside termux for easier remote controlling
 - inside termux:
   - apt install git nodejs-lts
   - git clone https://github.com/ssbc/bench-ssb.git
