@@ -23,4 +23,8 @@ echo "running 11"
 node 11-sbot-replicate-ebt.js > 11-out.txt
 echo "running 12"
 node 12-flume-reduce.js > 12-out.txt
+echo "running 12"
+node 12-flume-reduce.js > 12-out.txt
+echo "running 13"
+node 13-test-private.js > 13-out.txt
 rm -rf /tmp/bench-ssb-legacy_ssb /tmp/bench-ssb-legacy_ssb2
