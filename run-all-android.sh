@@ -1,3 +1,4 @@
+mkdir tmp
 node 00-generate.js
 echo "running 01"
 node android-wrapper.js 01-validate.js > 01-out.txt
@@ -25,4 +26,4 @@ echo "running 12"
 node android-wrapper.js 12-flume-reduce.js > 12-out.txt
 echo "running 13"
 node android-wrapper.js 13-test-private.js > 13-out.txt
-rm -rf /tmp/bench-ssb-legacy_ssb /tmp/bench-ssb-legacy_ssb2
+rm -rf tmp/bench-ssb-legacy_ssb tmp/bench-ssb-legacy_ssb2

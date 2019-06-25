@@ -2,7 +2,7 @@ var Paramap = require('pull-paramap')
 var pull = require('pull-stream')
 
 var createSsb = require('ssb-db/create')
-var db = createSsb('/tmp/bench-ssb-legacy_ssb/', {}, require('ssb-keys').generate())
+var db = createSsb('tmp/bench-ssb-legacy_ssb/', {}, require('ssb-keys').generate())
 
 var i = 0
 

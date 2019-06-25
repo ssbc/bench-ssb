@@ -2,7 +2,7 @@ var Minimal = require('ssb-db/minimal')
 var data = require('./output.json')
 var rmrf = require('rimraf')
 
-var dir = '/tmp/bench-ssb-minimal_'+Date.now()+'/'
+var dir = 'tmp/bench-ssb-minimal_'+Date.now()+'/'
 var db = Minimal(dir, {})
 db.ready.set(true)
 

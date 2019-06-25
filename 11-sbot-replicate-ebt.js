@@ -5,7 +5,7 @@ var pull = require('pull-stream')
 var pCont = require('pull-cont')
 var rmrf = require('rimraf')
 
-var dir = '/tmp/bench-ssb-legacy_ssb/'
+var dir = 'tmp/bench-ssb-legacy_ssb/'
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
 var config = {
   path: dir,
@@ -14,7 +14,7 @@ var config = {
   replicate: {legacy: false}
 }
 
-var dir2 = '/tmp/bench-ssb-legacy_ssb2/'
+var dir2 = 'tmp/bench-ssb-legacy_ssb2/'
 rmrf.sync(dir2)
 
 var keys2 = ssbKeys.loadOrCreateSync(path.join(dir2, 'secret'))

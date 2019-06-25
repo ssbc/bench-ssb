@@ -3,7 +3,7 @@ var ssbKeys = require('ssb-keys')
 var path = require('path')
 var rmrf = require('rimraf')
 
-var dir = '/tmp/bench-ssb-legacy_ssb/'
+var dir = 'tmp/bench-ssb-legacy_ssb/'
 rmrf.sync(dir)
 
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
