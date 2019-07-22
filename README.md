@@ -28,12 +28,9 @@ repo.
   - apt install git nodejs-lts
   - git clone https://github.com/ssbc/bench-ssb.git
   - npm i
+  - run-all-android.sh
 
 Don't worry that sodium-native won't compile. Wasm is not [so bad](https://github.com/ssbc/bench-ssb/issues/5).
-
-Do note that currently it takes a bit of [manual
-work](https://github.com/dominictarr/sodium-browserify/issues/5) to
-make the tests use wasm.
 
 ## License
 

@@ -1,8 +1,6 @@
 var ssbKeys = require('ssb-keys')
 var path = require('path')
-var Many = require('pull-many')
 var pull = require('pull-stream')
-var pCont = require('pull-cont')
 
 var dir = '/tmp/bench-ssb-legacy_ssb/'
 var keys = ssbKeys.loadOrCreateSync(path.join(dir, 'secret'))
