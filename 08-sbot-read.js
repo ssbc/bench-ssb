@@ -12,8 +12,6 @@ var config = {
 var Sbot = require('ssb-server')
 var sbot = Sbot(config)
 
-var closed = false
-
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
@@ -54,7 +52,6 @@ sbot.getVectorClock(function (err, clock) {
       log(0, true)
       rpc.close()
       sbot.close()
-      closed = true
     }
   })
 })

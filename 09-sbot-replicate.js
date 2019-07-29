@@ -19,7 +19,6 @@ var Sbot = require('ssb-server')
 var sbot = Sbot(config)
 var sbot2 = Sbot({ path: dir2, keys: keys2 })
 
-var closed = false
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
@@ -61,7 +60,6 @@ sbot.getVectorClock(function (err, clock) {
       rpc.close()
       sbot.close()
       sbot2.close()
-      closed = true
     }
   })
 })

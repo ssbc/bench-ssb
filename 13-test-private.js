@@ -1,4 +1,3 @@
-var fs = require('fs')
 var V = require('ssb-validate')
 var U = require('./util')
 

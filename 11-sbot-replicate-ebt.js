@@ -1,6 +1,5 @@
 var ssbKeys = require('ssb-keys')
 var path = require('path')
-var pull = require('pull-stream')
 var rmrf = require('rimraf')
 
 var dir = '/tmp/bench-ssb-legacy_ssb/'
@@ -29,14 +28,11 @@ var sbot2 = Sbot({
   replicate: {legacy: false}
 })
 
-var closed = false
-
 var i = 0
 
 sbot.getVectorClock(function (err, clock) {
   var log = require('./util')('remote-ebt-replicate')
 
-  var first = Object.keys(clock)[0]
   var clockLength = Object.values(clock).reduce((a,b) => a+b, 0)
 
   sbot2.post(function (data) {

@@ -2,7 +2,6 @@ var Flume = require('flumedb')
 var OffsetLog = require('flumelog-offset')
 var codec = require('flumecodec')
 var Reduce = require('flumeview-reduce')
-var pull = require('pull-stream')
 var fs = require('fs')
 
 fs.unlink('/tmp/bench-ssb-legacy_ssb/flume/test.json', function() {
